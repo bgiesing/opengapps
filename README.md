@@ -1,6 +1,6 @@
 Getting the latest Open GApps
 ---------------
-The latest version of pre-built Open GApps can be found at http://opengapps.github.io/opengapps/
+The latest version of pre-built Open GApps can be found at http://opengapps.org
 
 Build your own Open GApps
 ---------------
@@ -11,10 +11,12 @@ To initialize your local repository using the Open GApps source tree, use a comm
 git clone git@github.com:opengapps/opengapps.git
 ```
 Then sync the submodules to get the original APK sources as provided by Google.
-You can also use this command to update at a later moment the sources to the most recent version
+You can also use this command to update at a later moment the sources to the most recent version:
 ```
-./download_sources.sh
+./download_sources.sh [--shallow] [arch]
 ```
+* ```--shallow``` will order to fetch only the latest snapshot of the APKs (reduces space used and amount of data to be retrieved by git, by not fetching the APKs' history)
+* ```arch``` can be one of the following "arm, arm64, x86, x86_64" to fetch only data required for specified architecture (note that fallback architectures will be be fetched too)
 
 To build Open GApps for all platforms and all android releases:
 ```
@@ -34,10 +36,11 @@ One can update the sources used with the command:
 ```
 ./add_sourceapp.sh /path/to/the/file/you/want/to/add.apk [/even/more/files.apk...]
 ```
-For contributors, updated sources can be uploaded by browsing to one of the sources-subdirectories and pushing it to the repository:
+For contributors, updated sources can be uploaded by using this command:
 ```
-cd sources/architecture
-git add *
-git commit -a
-git push
+./upload_sources.sh
+```
+If you want an overview of the locally available sources:
+```
+./report_sources.sh
 ```
