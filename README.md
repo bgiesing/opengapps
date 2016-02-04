@@ -8,10 +8,9 @@ If you want to build your own version of Open GApps, you'll need to get the git 
 
 To initialize your local repository using the Open GApps source tree, use a command like:
 ```
-git clone git@github.com:opengapps/opengapps.git
+git clone --recursive git@github.com:opengapps/opengapps.git
 ```
-Then sync the submodules to get the original APK sources as provided by Google.
-You can also use this command to update at a later moment the sources to the most recent version:
+Then to update the sources later to the most recent version:
 ```
 ./download_sources.sh [--shallow] [arch]
 ```
